@@ -30,6 +30,7 @@ const ChatBOT = () => {
   });
 
   const sendMsg = async (msg) => {
+    setReceivingStatus(true);
     await axiosConfig
       .get("/chat", {
         params: { query: msg },
@@ -66,6 +67,10 @@ const ChatBOT = () => {
     getData();
   }, []);
 
+  // useEffect(() => {
+  //   console.log(msgList);
+  // }, [msgList]);
+
   return (
     <div className="chatContainer">
       <div className="chat-header chat-ele">
@@ -89,6 +94,7 @@ const ChatBOT = () => {
               sender={msg.sender}
               msg={msg.msg}
               profile={msg.profile}
+              // loading={receivingStatus}
               key={i}
             />
           );
@@ -138,6 +144,7 @@ const ChatBOT = () => {
               value={listeningStatus ? transcript : msg}
               onChange={(e) => {
                 e.preventDefault();
+                console.log(e.target.value);
                 setMsg(e.target.value);
               }}
             />
