@@ -4,6 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 import ReactLoading from "react-loading";
+import ReactMarkdown from 'react-markdown';
 
 function stringToColor(string) {
   let hash = 0;
@@ -60,7 +61,7 @@ const MsgBox = ({ msg, sender, profile, position, loading, onStart }) => {
         {loading ? (
           <ReactLoading type="bubbles" height="20px" width="20px" />
         ) : (
-          <span>{msg}</span>
+          <ReactMarkdown>{msg}</ReactMarkdown>
         )}
       </div>
     </div>
