@@ -95,7 +95,7 @@ const ChatBOT = () => {
               sender={msg.sender}
               msg={msg.msg}
               profile={msg.profile}
-              // loading={receivingStatus}
+              text={msg.msg}
               key={i}
             />
           );
@@ -106,10 +106,12 @@ const ChatBOT = () => {
           action=""
           onSubmit={(e) => {
             e.preventDefault();
-            updateMsgList(msg, "right");
-            setReceivingStatus(true);
-            sendMsg(msg);
-            setMsg("");
+            if (msg) {
+              updateMsgList(msg, "right");
+              setReceivingStatus(true);
+              sendMsg(msg);
+              setMsg("");
+            }
           }}
         >
           <div className="msgCont">
@@ -132,9 +134,12 @@ const ChatBOT = () => {
               }}
             >
               {!listeningStatus ? (
-                <FontAwesomeIcon icon={faMicrophone} />
+                <FontAwesomeIcon
+                  icon={faMicrophone}
+                  style={{ color: "white" }}
+                />
               ) : (
-                <FontAwesomeIcon icon={faStop} />
+                <FontAwesomeIcon icon={faStop} style={{ color: "white" }} />
               )}
             </div>
             <input

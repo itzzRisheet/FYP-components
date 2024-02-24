@@ -1,0 +1,25 @@
+* {
+  background-color: black;
+  color: white;
+}
+
+.ytHome {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  width: 100%;
+  height: 93vh;
+  display: flex;
+}
+
+.head {
+  height: 7vh;
+}
+
+.yt-browse {
+  width: 90%;
+  height: 93vh;
+  overflow: hidden;
+}

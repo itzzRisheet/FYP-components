@@ -2,9 +2,12 @@ import React from "react";
 import "../styles/messagebox.css";
 import Avatar from "@mui/material/Avatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRobot } from "@fortawesome/free-solid-svg-icons";
+import { faRobot, faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
 import ReactLoading from "react-loading";
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
+import Speech from "react-speech";
+import TextToSpeech from "../helper/tts";
+import { useSpeechSynthesis } from "react-speech-kit";
 
 function stringToColor(string) {
   let hash = 0;
@@ -43,15 +46,18 @@ function stringAvatar(name, profile) {
   };
 }
 
-const MsgBox = ({ msg, sender, profile, position, loading, onStart }) => {
+const MsgBox = ({ msg, sender, profile, position, loading, text }) => {
+  const { speak } = useSpeechSynthesis();
+
   return (
-    <div className={position}>
+    <div className={`${position} msgBox`}>
       <div className="avatar">
         {position === "left" ? (
           <FontAwesomeIcon
             icon={faRobot}
             size="2xl"
             beatFade={loading ? true : false}
+            style={{ color: "#ec55e0" }}
           />
         ) : (
           <Avatar alt={sender} {...stringAvatar(sender, profile)} />
@@ -59,11 +65,21 @@ const MsgBox = ({ msg, sender, profile, position, loading, onStart }) => {
       </div>
       <div className="msg">
         {loading ? (
-          <ReactLoading type="bubbles" height="20px" width="20px" />
+          <ReactLoading
+            type="bubbles"
+            height="20px"
+            width="20px"
+            style={{ color: "#c7dbff" }}
+          />
         ) : (
           <ReactMarkdown>{msg}</ReactMarkdown>
         )}
       </div>
+      {position === "left" && !loading ? (
+        <TextToSpeech className="volumeBtn" text={msg} />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  height: 100%;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-size: 1.5em;
+}
+
+.yt-icon {
+  font-size: 2rem;
+  color: red;
+}
+
+.searchbox {
+}

@@ -1,0 +1,65 @@
+.horizontal-scroll {
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 1.5rem;
+}
+
+.invisible {
+  /* display: none; */
+  opacity: 0.4;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.visible {
+  /* display: block; */
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transition: width 0.2s ease-in-out;
+}
+
+.scroll-1.hovered {
+  width: 90%;
+  display: flex;
+}
+
+/* Customize scrollbar for WebKit browsers (Chrome, Safari) */
+.scroll-1::-webkit-scrollbar {
+  height: 5px; /* Set your preferred height */
+  /* transform: translateY(-10px); */
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.scroll-1:hover::-webkit-scrollbar {
+  opacity: 1;
+}
+
+.scroll-1::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+/* Optional: Hide scrollbar thumb when not hovering */
+.scroll-1:not(:hover)::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.cata { 
+  background-color: #cdc4c4;
+  border-radius: 20px;
+  padding: 0.4rem;
+}
